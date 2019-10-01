@@ -3,12 +3,17 @@ package bimap
 
 import "sync"
 
-// BiMap is a bi-directional hashmap that is thread safe and supports immutability
-type BiMap struct {
-	s         sync.RWMutex
-	immutable bool
+// BiMap is a bi-directional hashmap.
+type Value struct {
 	forward   map[interface{}]interface{}
 	inverse   map[interface{}]interface{}
+}
+
+// BiMapSafe is a BiMap, is thread safe and supports immutability
+type BiMap struct {
+  Value
+	s         sync.RWMutex
+	immutable bool
 }
 
 // NewBiMap returns a an empty, mutable, biMap
